@@ -1,8 +1,12 @@
-/bin
-/apt_generated
-/target
-/.settings
+# Gradle
+/.gradle
 /.idea
+/build
+
+# Eclipse
+/.settings
 .classpath
+
+# IntelliJ
 .project
 *.iml

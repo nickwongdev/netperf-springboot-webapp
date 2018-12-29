@@ -5,6 +5,8 @@ import com.nickwongdev.netperf.springboot.model.WorkRequest
 import com.nickwongdev.netperf.springboot.model.WorkResponse
 import kotlinx.coroutines.runBlocking
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
@@ -34,11 +36,11 @@ class WorkController @Autowired constructor(
 		@RequestParam(required = false) waitMax: Long?
 	): WorkResponse {
 
-		val iter = if (iterations != null) iterations else DEFAULT_ITERATIONS
-		val cMin = if (calculationsMin != null) calculationsMin else DEFAULT_CALCITERMIN
-		val cMax = if (calculationsMax != null) calculationsMax else DEFAULT_CALCITERMAX
-		val wMin = if (waitMin != null) waitMin else DEFAULT_WAITMIN
-		val wMax = if (waitMax != null) waitMax else DEFAULT_WAITMAX
+		val iter = iterations ?: DEFAULT_ITERATIONS
+		val cMin = calculationsMin ?: DEFAULT_CALCITERMIN
+		val cMax = calculationsMax ?: DEFAULT_CALCITERMAX
+		val wMin = waitMin ?: DEFAULT_WAITMIN
+		val wMax = waitMax ?: DEFAULT_WAITMAX
 
 		runBlocking {
 			val result = workService.work(iter, cMin, cMax, wMin, wMax)

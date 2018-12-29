@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
-class Main {
-
+class Application {
 	@Bean
 	fun workService(): WorkService {
 		return WorkService()
@@ -15,7 +14,5 @@ class Main {
 }
 
 fun main(args: Array<String>) {
-	SpringApplication.run(Main::class.java, *args)
+	SpringApplication.run(Application::class.java, *args)
 }
-
-
